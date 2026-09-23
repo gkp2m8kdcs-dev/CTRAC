@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Support — CTRAC</title>
+<meta name="description" content="Get help with CTRAC. Contact support, browse FAQs, and learn how to get the most out of your investment journal." />
+<meta name="theme-color" content="#0B1220" />
+<link rel="icon" type="image/png" href="icon.png" />
+<style>
+  :root{--bg:#0B1220;--bg-2:#0F172A;--panel:#121B2E;--line:#1E2A44;--text:#E6ECF7;--muted:#9AA8BF;--accent:#5EE6B5;--accent-2:#7AA8FF;}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .container{max-width:960px;margin:0 auto;padding:0 24px}
+  header.site{border-bottom:1px solid var(--line);background:rgba(11,18,32,.85);position:sticky;top:0;z-index:10;backdrop-filter:saturate(140%) blur(10px)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.5px}
+  .brand .logo{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#0B1220;font-weight:800}
+  .nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0}
+  .nav a{color:var(--text);opacity:.85}
+  .hero{padding:60px 0 20px}
+  .hero h1{font-size:40px;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
+  .hero p.lede{color:var(--muted);margin:0;font-size:17px;max-width:680px}
+  .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin:30px 0}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .card h2{margin:0 0 8px;font-size:20px}
+  .card p{color:var(--muted);margin:0 0 14px}
+  .email-btn{display:inline-block;background:var(--accent);color:#0B1220;padding:12px 18px;border-radius:10px;font-weight:700}
+  .email-btn:hover{filter:brightness(1.05);text-decoration:none}
+  .meta{color:var(--muted);font-size:13px;margin-top:10px}
+  details.faq{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+  details.faq summary{cursor:pointer;font-weight:600}
+  details.faq p{color:var(--muted);margin:10px 0 0}
+  .topic-list{list-style:none;padding:0;margin:0}
+  .topic-list li{margin:10px 0}
+  footer.site{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px;text-align:center;margin-top:40px}
+  @media (max-width:800px){.grid{grid-template-columns:1fr}.nav ul{display:none}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="CTRAC Home">
+      <div class="logo">C</div>
+      <span>CTRAC</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <h1>Support</h1>
+      <p class="lede">Need help with CTRAC? Send us a note — we read every message and reply as quickly as we can.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="grid">
+      <div class="card">
+        <h2>Email us</h2>
+        <p>The fastest way to reach the CTRAC team. We typically respond within 1–3 business days.</p>
+        <a class="email-btn" href="mailto:litzybuziemextn527@gmail.com?subject=CTRAC%20Support">litzybuziemextn527@gmail.com</a>
+        <div class="meta">Please include your iOS version and a short description of the issue or question.</div>
+      </div>
+
+      <div class="card">
+        <h2>What to include</h2>
+        <ul class="topic-list">
+          <li>• Your device model and iOS version (Settings → General → About).</li>
+          <li>• CTRAC version (shown on the About screen in the app).</li>
+          <li>• A clear description of what happened and what you expected.</li>
+          <li>• Screenshots, if relevant — they help a lot.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 style="margin:30px 0 12px">Common questions</h2>
+
+    <details class="faq" open>
+      <summary>How do I back up my CTRAC data?</summary>
+      <p>Your CTRAC data is included in your normal iOS device backups. Make sure iCloud Backup (or iTunes/Finder backups) is enabled in iOS Settings. CTRAC itself does not transmit your data to any server.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How do I delete all of my CTRAC data?</summary>
+      <p>Delete the CTRAC app from your device. This removes all locally stored holdings, transactions, goals, budgets, watchlist items, notes, and receipt images created by the app.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Are prices real-time or delayed?</summary>
+      <p>CTRAC's prices are simulated from a deterministic seed so your historical view stays consistent. The app does not request network access to obtain market data.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does CTRAC connect to my broker?</summary>
+      <p>No. CTRAC does not connect to any broker, exchange, or trading venue. It is a self-contained journaling and tracking tool.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I import or export my data?</summary>
+      <p>Use the export option inside the app's Settings to produce a local backup file you control. CTRAC does not send this file anywhere.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is CTRAC a financial advisor?</summary>
+      <p>No. CTRAC is an educational tool. It does not provide financial, investment, tax, or legal advice.</p>
+    </details>
+
+    <details class="faq">
+      <summary>I have a feature idea.</summary>
+      <p>We love hearing them. Send a note to <a href="mailto:litzybuziemextn527@gmail.com">litzybuziemextn527@gmail.com</a> with the subject "Feature Idea".</p>
+    </details>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="container">
+    © 2026 CTRAC · <a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a>
+  </div>
+</footer>
+
+</body>
+</html>

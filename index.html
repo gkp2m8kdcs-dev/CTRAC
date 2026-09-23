@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CTRAC — Personal Wealth & Investment Journal</title>
+<meta name="description" content="CTRAC is a private, on-device investment journal for long-term investors. Track portfolio, journal transactions, set goals, monitor budgets and watchlists — all stored locally on your iPhone." />
+<meta name="keywords" content="CTRAC, personal finance, investment journal, portfolio tracker, net worth, asset allocation, dividend tracker, financial goals, budget planner, watchlist, on-device, privacy, no login required" />
+<meta name="author" content="CTRAC" />
+<meta property="og:title" content="CTRAC — Personal Wealth & Investment Journal" />
+<meta property="og:description" content="A private, on-device investment journal for serious long-term investors. No accounts. No tracking. No servers." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0B1220" />
+<link rel="icon" type="image/png" href="icon.png" />
+<style>
+  :root{
+    --bg:#0B1220;
+    --bg-2:#0F172A;
+    --panel:#121B2E;
+    --panel-2:#16223A;
+    --line:#1E2A44;
+    --text:#E6ECF7;
+    --muted:#9AA8BF;
+    --accent:#5EE6B5;
+    --accent-2:#7AA8FF;
+    --warn:#F4B860;
+    --danger:#F47C7C;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px}
+  header.site{position:sticky;top:0;background:rgba(11,18,32,.85);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.5px}
+  .brand .logo{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#0B1220;font-weight:800}
+  .brand span{font-size:18px}
+  .nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0}
+  .nav a{color:var(--text);opacity:.85}
+  .nav a:hover{opacity:1;text-decoration:none}
+  .btn{display:inline-block;background:var(--accent);color:#0B1220;padding:10px 18px;border-radius:10px;font-weight:700}
+  .btn:hover{filter:brightness(1.05);text-decoration:none}
+  .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+
+  /* Hero */
+  .hero{padding:80px 0 60px;background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(122,168,255,.15), transparent 60%),
+    radial-gradient(900px 500px at 0% 10%, rgba(94,230,181,.12), transparent 60%)}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .hero h1{font-size:54px;line-height:1.1;margin:0 0 18px;letter-spacing:-.02em}
+  .hero p.lede{font-size:18px;color:var(--muted);margin:0 0 28px;max-width:560px}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+  .badge{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:6px 10px;border-radius:999px;background:var(--panel)}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .phone-mock{
+    background:linear-gradient(180deg,#1A2540,#0E1626);
+    border:1px solid var(--line);border-radius:36px;padding:22px;box-shadow:0 30px 60px rgba(0,0,0,.45), inset 0 0 0 2px rgba(255,255,255,.02);
+    aspect-ratio: 9 / 19;max-width:280px;margin-left:auto
+  }
+  .phone-screen{background:#0B1220;border-radius:24px;height:100%;padding:18px;display:flex;flex-direction:column;gap:12px;border:1px solid #1c2742}
+  .row{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}
+  .big-num{font-size:30px;font-weight:800;color:var(--text)}
+  .mini{height:80px;background:linear-gradient(180deg,rgba(94,230,181,.18),rgba(94,230,181,0));border:1px solid var(--line);border-radius:14px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{font-size:11px;color:var(--muted);padding:4px 8px;border:1px solid var(--line);border-radius:999px}
+
+  section{padding:80px 0;border-top:1px solid var(--line)}
+  section h2{font-size:32px;margin:0 0 12px;letter-spacing:-.01em}
+  section p.sub{color:var(--muted);margin:0 0 36px;max-width:720px}
+
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .card h3{margin:6px 0 8px;font-size:18px}
+  .card p{color:var(--muted);margin:0;font-size:14.5px}
+  .icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,rgba(94,230,181,.25),rgba(122,168,255,.25));display:grid;place-items:center;color:var(--accent);font-weight:800}
+
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .pillar{background:var(--panel-2);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .pillar h4{margin:6px 0 6px;font-size:16px}
+  .pillar p{margin:0;color:var(--muted);font-size:14px}
+
+  .screens{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .screen{aspect-ratio: 9 / 19;background:linear-gradient(180deg,#14203A,#0B1220);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:8px}
+  .screen .title{font-size:12px;color:var(--muted)}
+  .screen .num{font-size:18px;font-weight:700}
+  .bar{height:8px;background:#1B2742;border-radius:6px;overflow:hidden}
+  .bar > span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+  .faq details{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+  .faq summary{cursor:pointer;font-weight:600}
+  .faq p{color:var(--muted);margin:10px 0 0}
+
+  footer.site{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:14px}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+  .footer-grid h5{color:var(--text);margin:0 0 10px;font-size:14px}
+  .footer-grid ul{list-style:none;padding:0;margin:0}
+  .footer-grid li{margin:6px 0}
+  .legal{margin-top:30px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media (max-width: 900px){
+    .hero-grid{grid-template-columns:1fr}
+    .phone-mock{margin:24px auto 0}
+    .hero h1{font-size:40px}
+    .features,.pillars{grid-template-columns:1fr 1fr}
+    .screens{grid-template-columns:1fr 1fr}
+    .footer-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width: 560px){
+    .features,.pillars,.screens{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="CTRAC Home">
+      <div class="logo">C</div>
+      <span>CTRAC</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" style="border-top:none">
+    <div class="container hero-grid">
+      <div>
+        <div class="badges">
+          <span class="badge">iPhone · iOS</span>
+          <span class="badge">On-device only</span>
+          <span class="badge">No account required</span>
+          <span class="badge">Educational tool</span>
+        </div>
+        <h1>Your wealth,<br/>clearly tracked.<br/>Quietly private.</h1>
+        <p class="lede">
+          CTRAC is a private, on-device investment journal built for serious long-term investors.
+          Track every buy, sell, dividend, deposit and expense in a beautifully designed dark-mode workspace
+          that lives entirely on your iPhone — no accounts, no logins, no servers, no surveillance.
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="support.html">Get in touch</a>
+          <a class="btn ghost" href="#features">Explore the app</a>
+        </div>
+      </div>
+      <div class="phone-mock" aria-hidden="true">
+        <div class="phone-screen">
+          <div class="row"><span>Net Worth</span><span>Today</span></div>
+          <div class="big-num">$ 248,930</div>
+          <div class="mini" aria-label="price chart sparkline"></div>
+          <div class="row"><span>Allocation</span><span>5 classes</span></div>
+          <div class="bar"><span style="width:62%"></span></div>
+          <div class="row"><span>Cash flow · 6 mo</span><span>+ $ 12,480</span></div>
+          <div class="bar"><span style="width:48%"></span></div>
+          <div class="chips">
+            <span class="chip">AAPL</span>
+            <span class="chip">VTI</span>
+            <span class="chip">BTC</span>
+            <span class="chip">BND</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <h2>Everything serious investors need.</h2>
+      <p class="sub">A focused toolkit designed to scale with you across decades — not months.</p>
+      <div class="features">
+        <div class="card">
+          <div class="icon">D</div>
+          <h3>Dashboard</h3>
+          <p>Live net-worth card, interactive price chart, allocation donut, six-month cash-flow bars, and a top-movers feed at a glance.</p>
+        </div>
+        <div class="card">
+          <div class="icon">P</div>
+          <h3>Portfolio</h3>
+          <p>Drill into every holding with average cost, realized and unrealized P&amp;L, and a full chronological transaction list.</p>
+        </div>
+        <div class="card">
+          <div class="icon">J</div>
+          <h3>Journal</h3>
+          <p>Your financial ledger — record any transaction type in seconds, attach receipt photos from the camera or library, and search by asset, note or date.</p>
+        </div>
+        <div class="card">
+          <div class="icon">I</div>
+          <h3>Insights</h3>
+          <p>Daily-returns heatmap, allocation by class and category, and a smart-insight panel surfacing concentration risk, dividend income and return posture.</p>
+        </div>
+        <div class="card">
+          <div class="icon">G</div>
+          <h3>Goals</h3>
+          <p>Plan retirement, emergency reserves or learning budgets with monthly contribution suggestions that adapt to your pace.</p>
+        </div>
+        <div class="card">
+          <div class="icon">B</div>
+          <h3>Budget &amp; Watchlist</h3>
+          <p>Keep spending categories honest and track the tickers on your research list with target prices and upside percentages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS / MOCK GRID -->
+  <section>
+    <div class="container">
+      <h2>A calm, focused workspace.</h2>
+      <p class="sub">Dark-mode UI tuned for clarity. No clutter, no ads, no upsells, no notifications asking you to come back.</p>
+      <div class="screens" role="img" aria-label="App screen previews">
+        <div class="screen"><div class="title">Dashboard</div><div class="num">$ 248,930</div><div class="bar"><span style="width:70%"></span></div><div class="bar"><span style="width:42%"></span></div><div class="bar"><span style="width:58%"></span></div></div>
+        <div class="screen"><div class="title">Portfolio</div><div class="num">AAPL · +18.4%</div><div class="bar"><span style="width:65%"></span></div><div class="bar"><span style="width:35%"></span></div><div class="bar"><span style="width:80%"></span></div></div>
+        <div class="screen"><div class="title">Journal</div><div class="num">12 entries</div><div class="bar"><span style="width:55%"></span></div><div class="bar"><span style="width:48%"></span></div><div class="bar"><span style="width:72%"></span></div></div>
+        <div class="screen"><div class="title">Insights</div><div class="num">Heatmap</div><div class="bar"><span style="width:30%"></span></div><div class="bar"><span style="width:60%"></span></div><div class="bar"><span style="width:45%"></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section id="privacy">
+    <div class="container">
+      <h2>Privacy is the architecture.</h2>
+      <p class="sub">CTRAC does not connect to any broker, exchange or trading venue. There are no accounts and no servers. Your data stays on your device.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <h4>No account, no login</h4>
+          <p>You install, you use it. We do not know who you are, and there is nothing to sign in to.</p>
+        </div>
+        <div class="pillar">
+          <h4>No tracking, no analytics</h4>
+          <p>No third-party SDKs. No advertising identifiers. No crash reporting that includes your data.</p>
+        </div>
+        <div class="pillar">
+          <h4>Simulated prices</h4>
+          <p>All prices are generated from a deterministic seed so your historical view stays stable — and the app never reaches the network for quotes.</p>
+        </div>
+      </div>
+      <p style="margin-top:24px;color:var(--muted)">
+        Full details are available in our
+        <a href="privacy.html">Privacy Policy</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2>Frequently asked questions.</h2>
+      <p class="sub">Quick answers about what CTRAC does — and does not — do.</p>
+
+      <details>
+        <summary>Does CTRAC connect to my broker or exchange?</summary>
+        <p>No. CTRAC does not connect to any broker, exchange or trading venue. It is a self-contained journaling and tracking tool.</p>
+      </details>
+      <details>
+        <summary>Where is my data stored?</summary>
+        <p>All data is stored locally on your iPhone. Backups follow your normal iCloud device backup settings, controlled by you in iOS.</p>
+      </details>
+      <details>
+        <summary>Does CTRAC provide financial advice?</summary>
+        <p>No. CTRAC is educational. The app includes an in-app risk acknowledgement reminding you that nothing here constitutes financial, investment, tax or legal advice.</p>
+      </details>
+      <details>
+        <summary>Are prices real-time?</summary>
+        <p>No. Prices are simulated from a deterministic seed so historical views remain consistent for you across sessions. The app does not request network access for quotes.</p>
+      </details>
+      <details>
+        <summary>How do I contact support?</summary>
+        <p>Email <a href="mailto:litzybuziemextn527@gmail.com">litzybuziemextn527@gmail.com</a> or visit the <a href="support.html">Support</a> page.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:10px">
+          <div class="logo">C</div>
+          <span>CTRAC</span>
+        </div>
+        <p>Personal Wealth &amp; Investment Journal. Built for long-term investors who value clarity and privacy.</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#privacy">Privacy</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:litzybuziemextn527@gmail.com">litzybuziemextn527@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 CTRAC. All rights reserved.</span>
+      <span>Educational use only · Not financial advice.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
